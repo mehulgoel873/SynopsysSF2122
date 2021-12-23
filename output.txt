@@ -1,13 +1,13 @@
-Objective: 43
+Objective: 42
 Route for vehicle 0:
-0 Time(0,0) -> 0 Time(0,0)
-Time of the route: 0min
+0 Time(0,0) -> 14 Time(35,65) -> 16 Time(72,88) -> 15 Time(72,88) -> 12 Time(72,89) -> 11 Time(72,89) -> 10 Time(119,121) -> 9 Time(119,121) -> 13 Time(142,148) -> 17 Time(149,149) -> 0 Time(153,153)
+Time of the route: 153min
 
 Route for vehicle 1:
-0 Time(0,0) -> 17 Time(72,89) -> 19 Time(87,95) -> 24 Time(87,95) -> 22 Time(87,97) -> 20 Time(87,102) -> 23 Time(92,122) -> 25 Time(148,148) -> 21 Time(148,148) -> 0 Time(152,152)
-Time of the route: 152min
+0 Time(0,0) -> 29 Time(67,81) -> 31 Time(67,81) -> 27 Time(67,81) -> 28 Time(67,81) -> 33 Time(67,81) -> 22 Time(92,95) -> 19 Time(92,95) -> 23 Time(92,95) -> 18 Time(92,97) -> 21 Time(92,97) -> 30 Time(97,104) -> 34 Time(111,141) -> 26 Time(115,145) -> 32 Time(131,147) -> 24 Time(148,152) -> 20 Time(148,152) -> 25 Time(154,154) -> 0 Time(158,158)
+Time of the route: 158min
 
 Route for vehicle 2:
-0 Time(0,0) -> 16 Time(58,65) -> 13 Time(64,65) -> 12 Time(64,65) -> 15 Time(64,65) -> 3 Time(68,70) -> 6 Time(69,71) -> 4 Time(109,109) -> 9 Time(109,109) -> 8 Time(109,109) -> 7 Time(109,117) -> 10 Time(113,121) -> 14 Time(142,148) -> 11 Time(142,148) -> 18 Time(149,149) -> 5 Time(154,154) -> 2 Time(154,154) -> 1 Time(158,158) -> 0 Time(164,164)
-Time of the route: 164min
-Total time of all routes: 316min
+0 Time(0,0) -> 2 Time(50,70) -> 5 Time(51,71) -> 3 Time(109,109) -> 8 Time(109,109) -> 7 Time(109,109) -> 6 Time(109,125) -> 4 Time(141,145) -> 1 Time(145,145) -> 0 Time(149,149)
+Time of the route: 149min
+Total time of all routes: 460min

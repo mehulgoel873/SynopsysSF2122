@@ -25,11 +25,11 @@ pyplot.show()
 # birch clustering
 from numpy import unique
 from numpy import where
-from sklearn.datasets import make_classification
+from sklearn.datasets import *
 from sklearn.cluster import Birch
 from matplotlib import pyplot
 # define dataset
-X, _ = make_classification(n_samples=1000, n_features=2, n_informative=2, n_redundant=0, n_clusters_per_class=1, random_state=4)
+X, _ = make_blobs(n_samples=1000, n_features=2, random_state=4)
 # define the model
 model = Birch(threshold=0.01, n_clusters=2)
 # fit the model

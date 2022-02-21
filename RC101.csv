@@ -1,4 +1,4 @@
-Cust No. ,X Cord,Y Cord,Demand,Ready Time,Due Date,Service Time
+Cust No.,XCord,YCord,Demand,Ready_Time,Due Date,Service_Time
 1,40,50,0,0,240,0
 2,25,85,20,145,175,10
 3,22,75,30,50,80,10

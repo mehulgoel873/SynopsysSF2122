@@ -9,19 +9,35 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import MinMaxScaler
 from matplotlib import pyplot as plt
 import numpy
-df = pd.read_csv("C101.csv")
+df = pd.read_csv("RC101.csv")
 df.head()
 
 #Elbow Method
-k_rng = range(1, 100)
+k_max = 20
+k_rng = range(0, k_max)
 sse = []
 for k in k_rng:
     print("Got K Value for: " + str(k))
-    km = KMeans(n_clusters=k)
+    #KMean Cluster happens here
+    km = KMeans(n_clusters=k+1)
     cluster_predicted = km.fit_predict(df[['XCord', 'YCord']])
     sse.append(km.inertia_)
+m = (sse[k_max-1]-sse[0])/(k_max-1)
+a=-m
+b=1
+c=-sse[0]
+dist = []
+maxDist = 0
+maxDistIndex = -1
+for i in k_rng:
+    dist.append(abs(a * i + b * sse[i] + c)/sqrt(a*a + b*b))
+    if (dist[i] > maxDist):
+        maxDist = dist[i]
+        maxDistIndex = i
+print(dist)
+print("Best K Value is: " + str(maxDistIndex))
 
-print(sse)
+# print(sse)
 plt.plot(k_rng,sse)
 plt.show()
 

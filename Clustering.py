@@ -9,7 +9,7 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import MinMaxScaler
 from matplotlib import pyplot as plt
 import numpy
-df = pd.read_csv("C201.csv")
+df = pd.read_csv("RC101.csv")
 df.head()
 
 #Elbow Method
@@ -37,22 +37,22 @@ for i in k_rng:
 print(dist)
 print("Best K Value is: " + str(maxDistIndex))
 
-# # print(sse)
-# plt.plot(k_rng,sse)
-# plt.show()
-
-colors = ['black', 'gray','brown','maroon','red','orangered', 'tan', 'orange','yellow', 'green','turquoise','cyan','blue', 'indigo', 'pink']
-
-#Clustering Code
-k = maxDistIndex
-km = KMeans(n_clusters=k)
-cluster_predicted = km.fit_predict(df[['XCord', 'YCord']])
-df['cluster'] = cluster_predicted
-for i in range(0, k):
-    dfI = df[df.cluster == i]
-    plt.scatter(dfI.XCord,dfI.YCord, color = colors[(i%15//3) + 5 * (i%3)])
-plt.scatter(km.cluster_centers_[:,0],km.cluster_centers_[:,1],color='purple',marker='*',label='centroid')
-plt.xlabel('XCord')
-plt.ylabel('YCord')
-plt.legend()
+# print(sse)
+plt.plot(k_rng,sse)
 plt.show()
+
+# colors = ['black', 'gray','brown','maroon','red','orangered', 'tan', 'orange','yellow', 'green','turquoise','cyan','blue', 'indigo', 'pink']
+#
+# #Clustering Code
+# k = maxDistIndex
+# km = KMeans(n_clusters=k)
+# cluster_predicted = km.fit_predict(df[['XCord', 'YCord']])
+# df['cluster'] = cluster_predicted
+# for i in range(0, k):
+#     dfI = df[df.cluster == i]
+#     plt.scatter(dfI.XCord,dfI.YCord, color = colors[(i%15//3) + 5 * (i%3)])
+# plt.scatter(km.cluster_centers_[:,0],km.cluster_centers_[:,1],color='purple',marker='*',label='centroid')
+# plt.xlabel('XCord')
+# plt.ylabel('YCord')
+# plt.legend()
+# plt.show()

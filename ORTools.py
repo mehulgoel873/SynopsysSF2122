@@ -15,15 +15,14 @@ def create_data_model(df, clusters, depot):
     for r in range(0, df.shape[0]):
         data['time_matrix'].append([])
         for c in range(0, df.shape[0]):
-            data['time_matrix'][r].append(int(distBetween(df.iloc[r]['XCord'], df.iloc[r]['YCord'], df.iloc[c]['XCord'], df.iloc[c]['YCord'])/300000))
+            data['time_matrix'][r].append(int(distBetween(df.iloc[r]['XCord'], df.iloc[r]['YCord'], df.iloc[c]['XCord'], df.iloc[c]['YCord'])/2))
 
     data['time_windows'] = []
     for i in range(0, df.shape[0]):
-        data['time_windows'].append((int(df.iloc[i]['ReadyTime']), int(df.iloc[i]['DueDate'])))
+        data['time_windows'].append((int(df.iloc[i]['ReadyTime']/10), int(df.iloc[i]['DueDate'])))
     data['num_vehicles'] = clusters
     data['depot'] = 0
     return data
-
 
 def distBetween(x0, y0, x1, y1):
     return math.sqrt(math.pow(x1-x0, 2) + math.pow((y1-y0), 2))
@@ -83,8 +82,8 @@ def main(df, clusters, depot):
     time = 'Time'
     routing.AddDimension(
         transit_callback_index,
-        1000000000000,  # allow waiting time
-        1000000000000,  # maximum time per vehicle
+        3000,  # allow waiting time
+        3000,  # maximum time per vehicle
         False,  # Don't force start cumul to zero.
         time)
     time_dimension = routing.GetDimensionOrDie(time)
@@ -93,7 +92,7 @@ def main(df, clusters, depot):
         if location_idx == data['depot']:
             continue
         index = manager.NodeToIndex(location_idx)
-        time_dimension.CumulVar(index).SetRange(int(time_window[0]), int(time_window[1]))
+        time_dimension.CumulVar(index).SetRange(time_window[0], time_window[1])
     # Add time window constraints for each vehicle start node.
     depot_idx = data['depot']
     for vehicle_id in range(data['num_vehicles']):
@@ -120,11 +119,7 @@ def main(df, clusters, depot):
     # Print solution on console.
     if solution:
         print_solution(data, manager, routing, solution)
-    else:
-        print("FAILED")
 
 
 if __name__ == '__main__':
-    startTime = time.time()
     main()
-    print("Total Time Taken: " + str(time.time() - startTime))

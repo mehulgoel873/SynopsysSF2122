@@ -1,4 +1,4 @@
-Cust No. ,XCord,YCord,Demand,ReadyTime,DueDate,ServiceTime
+Customer,XCord,YCord,Demand,ReadyTime,DueDate,ServiceTime
 1,35,35,0,0,230,0
 2,41,49,10,161,171,10
 3,35,17,7,50,60,10

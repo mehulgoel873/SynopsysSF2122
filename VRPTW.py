@@ -7,10 +7,13 @@ from numpy import *
 from sklearn.datasets import *
 from sklearn.cluster import KMeans
 import ORTools as VRP
+import Output
+import pygame
 from sklearn.preprocessing import MinMaxScaler
 from matplotlib import pyplot as plt
 import numpy
-df = pd.read_csv("RC101.csv")
+fileName = 'R101'
+df = pd.read_csv(fileName + ".csv")
 df.head()
 
 #Elbow Method
@@ -47,10 +50,16 @@ k = maxDistIndex
 km = KMeans(n_clusters=k)
 cluster_predicted = km.fit_predict(df[['XCord', 'YCord']])
 df['cluster'] = cluster_predicted
-
+clusterRoutes = []
+times = []
 #SOLVE
-for i in range(0,k-1):
-    VRP.main(df[df.cluster == i], 1, df[df.Customer == 1])
+for i in range(0,k):
+    route, total_time = VRP.main(df[df.cluster == i], 1, df[df.Customer == 1])
+    times.append(total_time)
+    clusterRoutes.append(route)
+print("Finished")
+screen = Output.main(df, clusterRoutes, times, k)
+pygame.image.save(screen, "ImprovedOutput/" + fileName + ".png")
 
 '''#DISPLAY CLUSTERS
 colors = ['black', 'gray','brown','maroon','red','orangered', 'tan', 'orange','yellow', 'green','turquoise','cyan','blue', 'indigo', 'pink']

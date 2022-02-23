@@ -36,8 +36,10 @@ def print_solution(data, manager, routing, solution):
     print(f'Objective: {solution.ObjectiveValue()}')
     time_dimension = routing.GetDimensionOrDie('Time')
     total_time = 0
-    route = []
+    times = []
+    routes = []
     for vehicle_id in range(data['num_vehicles']):
+        routes.append([])
         index = routing.Start(vehicle_id)
         plan_output = 'Route for vehicle {}:\n'.format(vehicle_id)
         while not routing.IsEnd(index):
@@ -46,18 +48,20 @@ def print_solution(data, manager, routing, solution):
                 manager.IndexToNode(index), solution.Min(time_var),
                 solution.Max(time_var))
             index = solution.Value(routing.NextVar(index))
-            route.append((data['customerNum'][manager.IndexToNode(index)], solution.Min(time_var)))
+            routes[vehicle_id].append((data['customerNum'][manager.IndexToNode(index)], solution.Min(time_var)))
         time_var = time_dimension.CumulVar(index)
         plan_output += '{0} Time({1},{2})\n'.format(manager.IndexToNode(index),
                                                     solution.Min(time_var),
                                                     solution.Max(time_var))
-        route.append((data['customerNum'][manager.IndexToNode(index)], solution.Min(time_var)))
+        routes[vehicle_id].append((data['customerNum'][manager.IndexToNode(index)], solution.Min(time_var)))
         plan_output += 'Time of the route: {}min\n'.format(
             solution.Min(time_var))
         print(plan_output)
         total_time += solution.Min(time_var)
+        times.append(total_time)
+
     print('Total time of all routes: {}min'.format(total_time))
-    return route, total_time
+    return routes, times
 
 
 def main(df, clusters, depot):

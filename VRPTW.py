@@ -14,7 +14,7 @@ df = pd.read_csv("RC101.csv")
 df.head()
 
 #Elbow Method
-k_max = 20
+k_max = 10
 k_rng = range(0, k_max)
 sse = []
 for k in k_rng:
@@ -49,7 +49,8 @@ cluster_predicted = km.fit_predict(df[['XCord', 'YCord']])
 df['cluster'] = cluster_predicted
 
 #SOLVE
-solver = VRP.main(df[df.cluster == 0], 1, df[df.Customer == 1])
+for i in range(0,k-1):
+    VRP.main(df[df.cluster == i], 1, df[df.Customer == 1])
 
 '''#DISPLAY CLUSTERS
 colors = ['black', 'gray','brown','maroon','red','orangered', 'tan', 'orange','yellow', 'green','turquoise','cyan','blue', 'indigo', 'pink']

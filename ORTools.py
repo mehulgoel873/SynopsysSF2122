@@ -15,7 +15,7 @@ def create_data_model(df, clusters, depot):
     for r in range(0, df.shape[0]):
         data['time_matrix'].append([])
         for c in range(0, df.shape[0]):
-            data['time_matrix'][r].append(int(distBetween(df.iloc[r]['XCord'], df.iloc[r]['YCord'], df.iloc[c]['XCord'], df.iloc[c]['YCord'])/2))
+            data['time_matrix'][r].append(int(distBetween(df.iloc[r]['XCord'], df.iloc[r]['YCord'], df.iloc[c]['XCord'], df.iloc[c]['YCord'])/10))
 
     data['time_windows'] = []
     for i in range(0, df.shape[0]):

@@ -9,10 +9,12 @@ import ORToolsBase as VRP
 from sklearn.preprocessing import MinMaxScaler
 from matplotlib import pyplot as plt
 import numpy
-fileName = "R101"
-df = pd.read_csv(fileName + ".csv")
-df.head()
-cars = 3
-routes, times = VRP.main(df, cars, df[df.Customer == 1])
-screen = OutputBase.main(df, routes, times, cars)
-pygame.image.save(screen, "BaseOutput/" + fileName + ".png")
+def main(_fileName):
+    fileName = "R101"
+    df = pd.read_csv(fileName + ".csv")
+    df.head()
+    cars = 3
+    routes, times = VRP.main(df, cars, df[df.Customer == 1])
+    return times
+    # screen = OutputBase.main(df, routes, times, cars)
+    # pygame.image.save(screen, "BaseOutput/" + fileName + ".png")

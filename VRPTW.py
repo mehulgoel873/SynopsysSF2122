@@ -7,7 +7,6 @@ from numpy import *
 from sklearn.datasets import *
 from sklearn.cluster import KMeans
 import ORTools as VRP
-import Output
 import pygame
 from sklearn.preprocessing import MinMaxScaler
 from matplotlib import pyplot as plt

@@ -10,7 +10,7 @@ from sklearn.preprocessing import MinMaxScaler
 from matplotlib import pyplot as plt
 import numpy
 def main(_fileName):
-    fileName = "R101"
+    fileName = _fileName
     df = pd.read_csv(fileName + ".csv")
     df.head()
     cars = 3

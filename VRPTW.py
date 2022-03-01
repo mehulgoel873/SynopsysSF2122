@@ -22,7 +22,7 @@ def main(_fileName):
     k_rng = range(0, k_max)
     sse = []
     for k in k_rng:
-        print("Got K Value for: " + str(k))
+        #print("Got K Value for: " + str(k))
         #KMean Cluster happens here
         km = KMeans(n_clusters=k+1)
         cluster_predicted = km.fit_predict(df[['XCord', 'YCord']])
@@ -40,8 +40,8 @@ def main(_fileName):
             maxDist = dist[i]
             maxDistIndex = i
     '''# DISPLAY ELBOW CURVE
-    print(dist)
-    print("Best K Value is: " + str(maxDistIndex))
+    #print(dist)
+    #print("Best K Value is: " + str(maxDistIndex))
     plt.plot(k_rng,sse)
     plt.show()'''
 
@@ -58,7 +58,7 @@ def main(_fileName):
         route, total_time = VRP.main(df[df.cluster == i], 1, df[df.Customer == 1])
         times.append(total_time)
         clusterRoutes.append(route)
-    print("Finished")
+    #print("Finished")
 
     # screen = Output.main(df, clusterRoutes, times, k)
     # pygame.image.save(screen, "ImprovedOutput/" + fileName + ".png")

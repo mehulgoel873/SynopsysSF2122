@@ -17,7 +17,7 @@ k_max = 20
 k_rng = range(0, k_max)
 sse = []
 for k in k_rng:
-    print("Got K Value for: " + str(k))
+    # print("Got K Value for: " + str(k))
     #KMean Cluster happens here
     km = KMeans(n_clusters=k+1)
     cluster_predicted = km.fit_predict(df[['XCord', 'YCord']])
@@ -34,8 +34,8 @@ for i in k_rng:
     if (dist[i] > maxDist):
         maxDist = dist[i]
         maxDistIndex = i
-print(dist)
-print("Best K Value is: " + str(maxDistIndex))
+# print(dist)
+# print("Best K Value is: " + str(maxDistIndex))
 
 # print(sse)
 plt.plot(k_rng,sse)

@@ -33,7 +33,7 @@ def distBetween(x0, y0, x1, y1):
 
 def print_solution(data, manager, routing, solution):
     """Prints solution on console."""
-    print(f'Objective: {solution.ObjectiveValue()}')
+    # print(f'Objective: {solution.ObjectiveValue()}')
     time_dimension = routing.GetDimensionOrDie('Time')
     total_time = 0
     route = []
@@ -54,9 +54,9 @@ def print_solution(data, manager, routing, solution):
         route.append((data['customerNum'][manager.IndexToNode(index)], solution.Min(time_var)))
         plan_output += 'Time of the route: {}min\n'.format(
             solution.Min(time_var))
-        print(plan_output)
+        # print(plan_output)
         total_time += solution.Min(time_var)
-    print('Total time of all routes: {}min'.format(total_time))
+    # print('Total time of all routes: {}min'.format(total_time))
     return route, total_time
 
 

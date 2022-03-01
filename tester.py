@@ -16,20 +16,22 @@ timeTakenOld = []
 typesOfData = ["R", "C", "RC"]
 fileNames = []
 for type in typesOfData:
-    #Add Other Variations of Data Here
-    fileName = type + "101"
-    fileNames.append(fileName)
+    for i in range(1, 3):
+        for j in range(1, 6):
+            #Add Other Variations of Data Here
+            fileName = "TestCases/Synopsys Solomon Data - " + type + str(i) + "0" + str(j)
+            fileNames.append(fileName)
 
-    startTime = time.time()
-    times = VRPTW.main(fileName)
-    solveTimesNew.append(time.time() - startTime)
-    timeTakenNew.append(maxTime(times))
+            startTime = time.time()
+            times = VRPTW.main(fileName)
+            solveTimesNew.append(time.time() - startTime)
+            timeTakenNew.append(maxTime(times))
 
-    startTime = time.time()
-    times = BaseCase.main(fileName)
-    solveTimesOld.append(time.time() - startTime)
-    timeTakenOld.append(maxTime(times))
-    print("Finished: " + fileName)
+            startTime = time.time()
+            times = BaseCase.main(fileName)
+            solveTimesOld.append(time.time() - startTime)
+            timeTakenOld.append(maxTime(times))
+            print("Finished: " + fileName)
 
 with open('results.csv', 'w', encoding='UTF8') as f:
     writer = csv.writer(f)
@@ -37,7 +39,7 @@ with open('results.csv', 'w', encoding='UTF8') as f:
     # write the header
     writer.writerow(['FileName', 'SolveTime', 'MaxTime'])
     for i in range(len(times)):
-        writer.writerow(fileNames[i], )
+        writer.writerow(fileNames[i], solveTimesNew[i], timeTakenNew[i])
 
 
     # write the data

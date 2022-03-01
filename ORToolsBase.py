@@ -32,8 +32,8 @@ def distBetween(x0, y0, x1, y1):
     return math.sqrt(math.pow(x1-x0, 2) + math.pow((y1-y0), 2))
 
 def print_solution(data, manager, routing, solution):
-    """Prints solution on console."""
-    print(f'Objective: {solution.ObjectiveValue()}')
+    """#prints solution on console."""
+    #print(f'Objective: {solution.ObjectiveValue()}')
     time_dimension = routing.GetDimensionOrDie('Time')
     total_time = 0
     times = []
@@ -56,11 +56,11 @@ def print_solution(data, manager, routing, solution):
         routes[vehicle_id].append((data['customerNum'][manager.IndexToNode(index)], solution.Min(time_var)))
         plan_output += 'Time of the route: {}min\n'.format(
             solution.Min(time_var))
-        print(plan_output)
+        # #print(plan_output)
         total_time += solution.Min(time_var)
         times.append(total_time)
 
-    print('Total time of all routes: {}min'.format(total_time))
+    #print('Total time of all routes: {}min'.format(total_time))
     return routes, times
 
 
@@ -128,7 +128,7 @@ def main(df, clusters, depot):
     # Solve the problem.
     solution = routing.SolveWithParameters(search_parameters)
 
-    # Print solution on console.
+    # #print solution on console.
     if solution:
         return print_solution(data, manager, routing, solution)
 

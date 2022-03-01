@@ -50,9 +50,9 @@ def create_data_model():
     return data
 
 
-def print_solution(data, manager, routing, solution):
-    """Prints solution on console."""
-    print(f'Objective: {solution.ObjectiveValue()}')
+def #print_solution(data, manager, routing, solution):
+    """#prints solution on console."""
+    #print(f'Objective: {solution.ObjectiveValue()}')
     time_dimension = routing.GetDimensionOrDie('Time')
     total_time = 0
     for vehicle_id in range(data['num_vehicles']):
@@ -70,9 +70,9 @@ def print_solution(data, manager, routing, solution):
                                                     solution.Max(time_var))
         plan_output += 'Time of the route: {}min\n'.format(
             solution.Min(time_var))
-        print(plan_output)
+        #print(plan_output)
         total_time += solution.Min(time_var)
-    print('Total time of all routes: {}min'.format(total_time))
+    #print('Total time of all routes: {}min'.format(total_time))
 
 
 def main():
@@ -139,9 +139,9 @@ def main():
     # Solve the problem.
     solution = routing.SolveWithParameters(search_parameters)
 
-    # Print solution on console.
+    # #print solution on console.
     if solution:
-        print_solution(data, manager, routing, solution)
+        #print_solution(data, manager, routing, solution)
 
 
 if __name__ == '__main__':

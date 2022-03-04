@@ -1,4 +1,4 @@
-R,XCord,YCord,Demand,ReadyTime,DueDate,ServiceTime
+Customer,XCord,YCord,Demand,ReadyTime,DueDate,ServiceTime
 1,40,50,0,0,240,0
 2,25,85,20,71,191,10
 3,22,75,30,30,150,10

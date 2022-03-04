@@ -31,6 +31,27 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\TestCases\Synopsys Solomon Data - RC104.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\TestCases\Synopsys Solomon Data - RC105.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\base.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\results.csv">
           <value>
             <Attribute>

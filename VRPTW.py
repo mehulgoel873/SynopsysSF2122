@@ -8,6 +8,7 @@ from sklearn.datasets import *
 from sklearn.cluster import KMeans
 import ORTools as VRP
 import pygame
+import Output
 from sklearn.preprocessing import MinMaxScaler
 from matplotlib import pyplot as plt
 import numpy
@@ -39,11 +40,13 @@ def main(_fileName):
         if (dist[i] > maxDist):
             maxDist = dist[i]
             maxDistIndex = i
-    '''# DISPLAY ELBOW CURVE
+    # DISPLAY ELBOW CURVE
     #print(dist)
     #print("Best K Value is: " + str(maxDistIndex))
     plt.plot(k_rng,sse)
-    plt.show()'''
+    plt.xlabel("Clusters")
+    plt.ylabel("Accuracy. Measured by Average Distance from Center")
+    plt.show()
 
 
     #CLUSTER
@@ -60,12 +63,12 @@ def main(_fileName):
         clusterRoutes.append(route)
     #print("Finished")
 
-    # screen = Output.main(df, clusterRoutes, times, k)
-    # pygame.image.save(screen, "ImprovedOutput/" + fileName + ".png")
+    screen = Output.main(df, clusterRoutes, times, k)
+    pygame.image.save(screen, "ImprovedOutput/" + fileName + ".png")
     return times
 
-    '''#DISPLAY CLUSTERS
-    colors = ['black', 'gray','brown','maroon','red','orangered', 'tan', 'orange','yellow', 'green','turquoise','cyan','blue', 'indigo', 'pink']
+    #DISPLAY CLUSTERS
+    '''colors = ['black', 'gray','brown','maroon','red','orangered', 'tan', 'orange','yellow', 'green','turquoise','cyan','blue', 'indigo', 'pink']
     for i in range(0, k):
         dfI = df[df.cluster == i]
         plt.scatter(dfI.XCord,dfI.YCord, color = colors[(i%15//3) + 5 * (i%3)])
@@ -74,3 +77,5 @@ def main(_fileName):
     plt.ylabel('YCord')
     plt.legend()
     plt.show()'''
+if __name__ == "__main__":
+    main("TestCases/Synopsys Solomon Data - R101")

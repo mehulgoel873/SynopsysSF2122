@@ -33,13 +33,13 @@ for type in typesOfData:
             timeTakenOld.append(maxTime(times))
             print("Finished: " + fileName)
 
-with open('results.csv', 'w', encoding='UTF8') as f:
+with open('base.csv', 'w', encoding='UTF8') as f:
     writer = csv.writer(f)
 
     # write the header
     writer.writerow(['FileName', 'SolveTime', 'MaxTime'])
-    for i in range(len(times)):
-        writer.writerow(fileNames[i], solveTimesNew[i], timeTakenNew[i])
+    for i in range(len(fileNames)):
+        writer.writerow([fileNames[i], solveTimesOld[i], timeTakenOld[i]])
 
 
     # write the data

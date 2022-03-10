@@ -12,11 +12,16 @@ import Output
 from sklearn.preprocessing import MinMaxScaler
 from matplotlib import pyplot as plt
 import numpy
+import time
 
 def main(_fileName):
+    startTime = time.time()
     fileName = _fileName
     df = pd.read_csv(fileName + ".csv")
     df.head()
+    # plt.scatter(df.XCord, df.YCord, color=['black'])
+    # plt.scatter(df.XCord[0],df.YCord[0],color='orange',s=[150])
+    # plt.show()
 
     #Elbow Method
     k_max = 10
@@ -43,10 +48,10 @@ def main(_fileName):
     # DISPLAY ELBOW CURVE
     #print(dist)
     #print("Best K Value is: " + str(maxDistIndex))
-    plt.plot(k_rng,sse)
-    plt.xlabel("Clusters")
-    plt.ylabel("Accuracy. Measured by Average Distance from Center")
-    plt.show()
+    # plt.plot(k_rng,sse)
+    # plt.xlabel("Clusters")
+    # plt.ylabel("Accuracy. Measured by Average Distance from Center")
+    # plt.show()
 
 
     #CLUSTER
@@ -56,11 +61,13 @@ def main(_fileName):
     df['cluster'] = cluster_predicted
     clusterRoutes = []
     times = []
+    print(time.time() - startTime)
     #SOLVE
     for i in range(0,k):
         route, total_time = VRP.main(df[df.cluster == i], 1, df[df.Customer == 1])
         times.append(total_time)
         clusterRoutes.append(route)
+    print(time.time() - startTime)
     #print("Finished")
 
     screen = Output.main(df, clusterRoutes, times, k)
@@ -78,4 +85,4 @@ def main(_fileName):
     plt.legend()
     plt.show()'''
 if __name__ == "__main__":
-    main("TestCases/Synopsys Solomon Data - R101")
+    main("TestCases/Synopsys Solomon Data - RC101")
